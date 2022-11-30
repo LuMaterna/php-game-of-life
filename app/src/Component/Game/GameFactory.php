@@ -12,9 +12,14 @@ class GameFactory
 
     private GameService $gameService;
 
-    public function __construct(GameService $gameService)
-    {
+    private XmlFileReader $xmlFileReader;
+
+    public function __construct(
+        GameService $gameService,
+        XmlFileReader $xmlFileReader
+    ) {
         $this->gameService = $gameService;
+        $this->xmlFileReader = $xmlFileReader;
     }
 
     /**
@@ -22,11 +27,21 @@ class GameFactory
      */
     public function create(string $inputFile, string $outputFile): Game
     {
-        $input = new XmlFileReader($inputFile);
         $output = new XmlFileWriter($outputFile);
 
-        [$size, $species, $cells, $iterationsCount] = $input->loadFile();
+        /** @var int[][]|null[][] $cells */
+        [$size, $species, $cells, $iterationsCount] = $this->readDataFromInputFile($inputFile);
 
-        return new Game($this->gameService, $size, $species, $cells, $iterationsCount, $output);
+        return new Game($this->gameService, (int) $size, (int) $species, $cells, (int) $iterationsCount, $output);
+    }
+
+    /**
+     * @param string $inputFile
+     * @return array<int|array<int[]|null[]>>
+     * @throws InvalidInputException
+     */
+    private function readDataFromInputFile(string $inputFile): array
+    {
+        return $this->xmlFileReader->loadFile($inputFile);
     }
 }

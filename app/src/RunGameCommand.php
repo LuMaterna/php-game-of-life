@@ -3,6 +3,7 @@
 namespace Life;
 
 use Life\Exception\InvalidInputException;
+use Life\Exception\OutputWritingException;
 use Life\Facade\GameFacade;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
@@ -42,6 +43,9 @@ final class RunGameCommand extends Command
             $this->gameFacade->run($inputFile, $outputFile);
         } catch (InvalidInputException $e) {
             $output->writeln(sprintf('File error: %s', $e->getMessage()));
+            return 1;
+        } catch (OutputWritingException $e) {
+            $output->writeln(sprintf('Output writing error: %s', $e->getMessage()));
             return 1;
         }
 

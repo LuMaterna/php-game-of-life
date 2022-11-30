@@ -2,6 +2,7 @@
 
 namespace Life\Component\Game;
 
+use Life\Exception\OutputWritingException;
 use Life\Helper\XmlFileWriter;
 use Life\Service\GameService;
 
@@ -50,6 +51,9 @@ class Game
         $this->output = $output;
     }
 
+    /**
+     * @throws OutputWritingException
+     */
     public function run(): void
     {
         for ($i = 0; $i < $this->iterationsCount; $i++) {

@@ -4,6 +4,7 @@ namespace Life\Facade;
 
 use Life\Component\Game\GameFactory;
 use Life\Exception\InvalidInputException;
+use Life\Exception\OutputWritingException;
 
 class GameFacade
 {
@@ -16,6 +17,7 @@ class GameFacade
 
     /**
      * @throws InvalidInputException
+     * @throws OutputWritingException
      */
     public function run(string $inputFile, string $outputFile): void
     {

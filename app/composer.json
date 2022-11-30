@@ -5,7 +5,10 @@
     "ext-libxml": "*",
     "php": ">=7.4.0",
     "symfony/console": "^5.1",
-    "php-di/php-di": "^6.4"
+    "php-di/php-di": "^6.4",
+    "symfony/validator": "^5.4",
+    "doctrine/annotations": "^1.13",
+    "ext-json": "*"
   },
   "require-dev": {
     "roave/security-advisories": "dev-master",
@@ -27,6 +30,6 @@
     "test": "php vendor/bin/phpunit ./tests",
     "cs": "php vendor/bin/phpcs --extensions=php --encoding=utf-8 -sp ./src",
     "stan": "php ./vendor/bin/phpstan.phar analyse -l max -c ./phpstan.neon -vvv ./src",
-    "stan-baseline": "php ./vendor/bin/phpstan.phar analyse -l max -c ./phpstan.neon -vvv ./src --generate-baseline"
+    "stan-baseline": "php ./vendor/bin/phpstan.phar analyse -l max -c ./phpstan.neon -vvv ./src --generate-baseline --allow-empty-baseline"
   }
 }
