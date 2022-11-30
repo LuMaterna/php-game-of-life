@@ -42,6 +42,7 @@ class XmlFileReader
 
     private function loadXmlFile(): SimpleXMLElement
     {
+		var_dump($this->filePath);
         if (!file_exists($this->filePath)) {
             throw new InvalidInputException("Unable to read nonexistent file");
         }

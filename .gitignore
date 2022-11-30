@@ -1,3 +1,6 @@
-vendor/*
-tests/tmp/*
-tests/**/output/*
+app/vendor/*
+app/tests/tmp/*
+app/tests/**/output/*
+app/samples
+
+.idea
