@@ -2,10 +2,12 @@
 
 namespace Tests\Life;
 
+use DI\Container;
 use DOMDocument;
 use Life\Facade\GameFacade;
 use Life\Factory\GameFactory;
 use Life\RunGameCommand;
+use Life\Service\GameService;
 use PHPUnit\Framework\Assert;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\Console\Tester\CommandTester;
@@ -27,9 +29,9 @@ class IntegrationTest extends TestCase
      */
     public function testGame(string $inputFile, string $expectedOutputFile): void
     {
-        $gameFactory = new GameFactory();
-        $gameFacade = new GameFacade($gameFactory);
-        $commandTester = new CommandTester(new RunGameCommand($gameFacade));
+        $container = new Container();
+        $command = $container->get(RunGameCommand::class);
+        $commandTester = new CommandTester($command);
 
         $commandTester->execute(
             [

@@ -52,12 +52,11 @@ class Game
 
     public function run(): void
     {
-        $iteratedCells = [];
         for ($i = 0; $i < $this->iterationsCount; $i++) {
-            $iteratedCells = $this->iterateEvolution();
+            $this->cells = $this->iterateEvolution();
         }
 
-        $this->output->saveWorld($this->size, $this->species, $iteratedCells);
+        $this->output->saveWorld($this->size, $this->species, $this->cells);
     }
 
     /**
