@@ -1,0 +1,51 @@
+parameters:
+	ignoreErrors:
+		-
+			message: "#^Method Life\\\\XmlFileReader\\:\\:loadFile\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/XmlFileReader.php
+
+		-
+			message: "#^Method Life\\\\XmlFileReader\\:\\:loadXmlFile\\(\\) should return SimpleXMLElement but returns SimpleXMLElement\\|false\\.$#"
+			count: 1
+			path: src/XmlFileReader.php
+
+		-
+			message: "#^Method Life\\\\XmlFileReader\\:\\:readCells\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/XmlFileReader.php
+
+		-
+			message: "#^Parameter \\#1 \\$data of function simplexml_load_string expects string, string\\|false given\\.$#"
+			count: 1
+			path: src/XmlFileReader.php
+
+		-
+			message: "#^Cannot access property \\$organisms on SimpleXMLElement\\|false\\.$#"
+			count: 1
+			path: src/XmlFileWriter.php
+
+		-
+			message: "#^Cannot access property \\$world on SimpleXMLElement\\|false\\.$#"
+			count: 2
+			path: src/XmlFileWriter.php
+
+		-
+			message: "#^Method Life\\\\XmlFileWriter\\:\\:saveWorld\\(\\) has parameter \\$cells with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/XmlFileWriter.php
+
+		-
+			message: "#^Parameter \\#1 \\$data of function simplexml_load_string expects string, string\\|false given\\.$#"
+			count: 1
+			path: src/XmlFileWriter.php
+
+		-
+			message: "#^Parameter \\#1 \\$life of method Life\\\\XmlFileWriter\\:\\:saveXml\\(\\) expects SimpleXMLElement, SimpleXMLElement\\|false given\\.$#"
+			count: 1
+			path: src/XmlFileWriter.php
+
+		-
+			message: "#^Parameter \\#1 \\$source of method DOMDocument\\:\\:loadXML\\(\\) expects string, string\\|false given\\.$#"
+			count: 1
+			path: src/XmlFileWriter.php

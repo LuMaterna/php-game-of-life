@@ -1,0 +1,5 @@
+parameters:
+	tmpDir: temp\phpstan
+	checkGenericClassInNonGenericObjectType: false
+includes:
+	- phpstan-baseline.neon

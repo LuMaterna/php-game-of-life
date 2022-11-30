@@ -8,7 +8,9 @@
   },
   "require-dev": {
     "roave/security-advisories": "dev-master",
-    "phpunit/phpunit": "^8.5"
+    "phpunit/phpunit": "^8.5",
+    "phpstan/phpstan": "^1.9",
+    "squizlabs/php_codesniffer": "*"
   },
   "autoload": {
     "psr-4": {
@@ -21,6 +23,9 @@
     }
   },
   "scripts": {
-    "test": "php vendor/bin/phpunit ./tests"
+    "test": "php vendor/bin/phpunit ./tests",
+    "cs": "php vendor/bin/phpcs --extensions=php --encoding=utf-8 -sp ./src",
+    "stan": "php ./vendor/bin/phpstan.phar analyse -l max -c ./phpstan.neon -vvv ./src",
+    "stan-baseline": "php ./vendor/bin/phpstan.phar analyse -l max -c ./phpstan.neon -vvv ./src --generate-baseline"
   }
 }

@@ -2,5 +2,7 @@ app/vendor/*
 app/tests/tmp/*
 app/tests/**/output/*
 app/samples
+app/temp
+app/.phpcs-cache
 
 .idea

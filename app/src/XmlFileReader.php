@@ -1,4 +1,4 @@
-<?php declare(strict_types = 1);
+<?php declare(strict_types=1);
 
 namespace Life;
 
@@ -20,7 +20,7 @@ class XmlFileReader
         $life = $this->loadXmlFile();
         $this->validateXmlFile($life);
 
-        $iterationsCount = (int)$life->world->iterations;
+        $iterationsCount = (int) $life->world->iterations;
         if ($iterationsCount < 0) {
             throw new InvalidInputException("Value of element 'iterations' must be zero or positive number");
         }
@@ -42,7 +42,6 @@ class XmlFileReader
 
     private function loadXmlFile(): SimpleXMLElement
     {
-		var_dump($this->filePath);
         if (!file_exists($this->filePath)) {
             throw new InvalidInputException("Unable to read nonexistent file");
         }
@@ -54,10 +53,10 @@ class XmlFileReader
             if (count($errors) > 0) {
                 throw new InvalidInputException("Cannot read XML file");
             }
-        }
-        catch (\Exception $e) {
+        } catch (\Exception $e) {
             throw new InvalidInputException("Cannot read XML file");
         }
+
         return $life;
     }
 
@@ -97,20 +96,27 @@ class XmlFileReader
         foreach ($life->organisms->organism as $organism) {
             $x = (int) $organism->x_pos;
             if ($x < 0 || $x >= $worldSize) {
-                throw new InvalidInputException("Value of element 'x_pos' of element 'organism' must be between 0 and number of cells");
+                throw new InvalidInputException(
+                    "Value of element 'x_pos' of element 'organism' must be between 0 and number of cells"
+                );
             }
             $y = (int) $organism->y_pos;
             if ($y < 0 || $y >= $worldSize) {
-                throw new InvalidInputException("Value of element 'y_pos' of element 'organism' must be between 0 and number of cells");
+                throw new InvalidInputException(
+                    "Value of element 'y_pos' of element 'organism' must be between 0 and number of cells"
+                );
             }
             $species = (int) $organism->species;
             if ($species < 0 || $species >= $speciesCount) {
-                throw new InvalidInputException("Value of element 'species' of element 'organism' must be between 0 and maximal number of species");
+                throw new InvalidInputException(
+                    "Value of element 'species' of element 'organism' must be between 0 and maximal number of species"
+                );
             }
             $cells[$y] = $cells[$y] ?? [];
             $finalSpecies = $species;
             if (isset($cells[$y][$x])) {
-                $existingCell = $cells[$y][$x]; /** @var int $existingCell */
+                $existingCell = $cells[$y][$x];
+                /** @var int $existingCell */
                 $availableSpecies = [$existingCell, $species];
                 $finalSpecies = $availableSpecies[array_rand($availableSpecies)];
             }
@@ -124,7 +130,7 @@ class XmlFileReader
                 }
             }
         }
+
         return $cells;
     }
-
 }
