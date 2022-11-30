@@ -4,10 +4,7 @@ namespace Tests\Life;
 
 use DI\Container;
 use DOMDocument;
-use Life\Facade\GameFacade;
-use Life\Factory\GameFactory;
 use Life\RunGameCommand;
-use Life\Service\GameService;
 use PHPUnit\Framework\Assert;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\Console\Tester\CommandTester;

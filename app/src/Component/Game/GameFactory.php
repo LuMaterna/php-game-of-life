@@ -1,9 +1,8 @@
 <?php declare(strict_types=1);
 
-namespace Life\Factory;
+namespace Life\Component\Game;
 
 use Life\Exception\InvalidInputException;
-use Life\Game;
 use Life\Helper\XmlFileReader;
 use Life\Helper\XmlFileWriter;
 use Life\Service\GameService;

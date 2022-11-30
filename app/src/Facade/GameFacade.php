@@ -2,8 +2,8 @@
 
 namespace Life\Facade;
 
+use Life\Component\Game\GameFactory;
 use Life\Exception\InvalidInputException;
-use Life\Factory\GameFactory;
 
 class GameFacade
 {
