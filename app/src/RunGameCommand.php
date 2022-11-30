@@ -2,6 +2,8 @@
 
 namespace Life;
 
+use Life\Exception\InvalidInputException;
+use Life\Facade\GameFacade;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
@@ -11,6 +13,15 @@ use function is_string;
 
 final class RunGameCommand extends Command
 {
+
+    private GameFacade $gameFacade;
+
+    public function __construct(GameFacade $gameFacade)
+    {
+        parent::__construct();
+        $this->gameFacade = $gameFacade;
+    }
+
     protected function configure(): void
     {
         $this->setName('game:run');
@@ -27,10 +38,14 @@ final class RunGameCommand extends Command
         $outputFile = $input->getOption('output');
         assert(is_string($outputFile));
 
-        $game = new Game();
-        $game->run($inputFile, $outputFile);
+        try {
+            $this->gameFacade->run($inputFile, $outputFile);
+        } catch (InvalidInputException $e) {
+            $output->writeln(sprintf('File error: %s', $e->getMessage()));
+            return 1;
+        }
 
-        $output->writeln('File ' . $outputFile . ' was saved.');
+        $output->writeln(sprintf('File %s was saved.', $outputFile));
 
         return 0;
     }

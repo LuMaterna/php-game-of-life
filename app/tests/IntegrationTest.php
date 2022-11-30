@@ -3,6 +3,8 @@
 namespace Tests\Life;
 
 use DOMDocument;
+use Life\Facade\GameFacade;
+use Life\Factory\GameFactory;
 use Life\RunGameCommand;
 use PHPUnit\Framework\Assert;
 use PHPUnit\Framework\TestCase;
@@ -25,7 +27,9 @@ class IntegrationTest extends TestCase
      */
     public function testGame(string $inputFile, string $expectedOutputFile): void
     {
-        $commandTester = new CommandTester(new RunGameCommand());
+        $gameFactory = new GameFactory();
+        $gameFacade = new GameFacade($gameFactory);
+        $commandTester = new CommandTester(new RunGameCommand($gameFacade));
 
         $commandTester->execute(
             [

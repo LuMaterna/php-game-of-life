@@ -1,7 +1,8 @@
 <?php declare(strict_types=1);
 
-namespace Life;
+namespace Life\Helper;
 
+use Life\Exception\InvalidInputException;
 use SimpleXMLElement;
 
 class XmlFileReader
@@ -112,7 +113,6 @@ class XmlFileReader
                     "Value of element 'species' of element 'organism' must be between 0 and maximal number of species"
                 );
             }
-            $cells[$y] = $cells[$y] ?? [];
             $finalSpecies = $species;
             if (isset($cells[$y][$x])) {
                 $existingCell = $cells[$y][$x];

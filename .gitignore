@@ -4,5 +4,6 @@ app/tests/**/output/*
 app/samples
 app/temp
 app/.phpcs-cache
+app/.phpunit.result.cache
 
 .idea

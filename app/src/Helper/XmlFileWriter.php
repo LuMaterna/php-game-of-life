@@ -1,7 +1,8 @@
 <?php declare(strict_types = 1);
 
-namespace Life;
+namespace Life\Helper;
 
+use Life\Exception\OutputWritingException;
 use SimpleXMLElement;
 
 class XmlFileWriter
